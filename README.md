@@ -1,4 +1,4 @@
-# React-Calculator
+# Rehackt-Calculator
 
 Made with create-react-app
 
