@@ -1,12 +1,10 @@
 # React-Calculator
-Calculator app made in React for my React.js workshop
-Made with create-react-app
 
-Slides: [Understanding React](http://slides.com/jumbosushi/understanding-react)
+Made with create-react-app
 
 ## Get started
 ```
-git clone git@github.com:jumbosushi/react-calculator.git
+git clone git@github.com:s-matthew-english/rehackt-calc
 cd react-calculator
 yarn
 yarn start
