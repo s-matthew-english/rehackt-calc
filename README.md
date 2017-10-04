@@ -1,6 +1,6 @@
 # Rehackt-Calculator
 
-Made with create-react-app
+Made with `create-react-app`
 
 ## Get started
 ```
