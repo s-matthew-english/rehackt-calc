@@ -17,6 +17,7 @@
               <ButtonNumber number="8" addLogicToEquation={this.props.addLogicToEquation} ></ButtonNumber>
               <ButtonNumber number="9" addLogicToEquation={this.props.addLogicToEquation} ></ButtonNumber>
               <ButtonNumber number="R" addLogicToEquation={this.props.addLogicToEquation} ></ButtonNumber>
+              <ButtonNumber number="D" addLogicToEquation={this.props.addLogicToEquation} ></ButtonNumber>
             </div>
           </div>
         )

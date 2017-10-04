@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      equation: 0,
+      equation: 0.00,
     }
 
     this.addLogicToEquation = this.addLogicToEquation.bind(this)
@@ -18,9 +18,14 @@ class App extends Component {
 
 
   addLogicToEquation(newLogic) {
+    if(newLogic==="D"){
+      // let newValue
+      // newValue = parseFloat('' + parseFloat(this.state.equation) + (newLogic/100.0))
+      // this.state.equation = newValue
+    }
     if(newLogic==="R"){
       this.state = {
-        equation: 0
+        equation: 0.00
       }
     }
     let newValue, multiplier
