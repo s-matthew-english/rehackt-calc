@@ -42,18 +42,25 @@ class App extends Component {
     let str = this.state.equation.toString()
     console.log('str: ', str)
 
-    palindrome(str)
+    while (!palindrome(this.state.equation)){
+      this.state.equation = this.state.equation + 0.01
+      palindrome(this.state.equation)
+    }
+    console.log("fuck yeah")
 
     function palindrome(str) {
-      let re = /[\W_]/g;
-      let lowRegStr = str.toLowerCase().replace(re, '')
-      let reverseStr = lowRegStr.split('').reverse().join('') 
-      if(reverseStr === lowRegStr) {
+      //let re = /[\W_]/g;
+      //let lowRegStr = str.toLowerCase().replace(re, '')
+      let stringIn = str.toString()
+      let reverseStr = stringIn.split('').reverse().join('') 
+      if(reverseStr === stringIn) {
         console.log("YES")
-        console.log("str: ", str)
+        console.log("str: ", stringIn)
+        return true
       } else {
         console.log("NOT")
-        console.log("str: ", str)
+        console.log("str: ", stringIn)
+        return false
       }
     }
   }
