@@ -53,50 +53,18 @@ class App extends Component {
       }
     }
 
-
-
-  // addLogicToEquation(newLogic) {
-  //   if(newLogic==="D"){
-  //     let keeperOfTheGate = this.state.equation.toString()
-  //     if(keeperOfTheGate.slice(-1)==="0"){
-  //       console.log("got 'em ;)")
-  //     }
-  //     //let newCalc = keeperOfTheGate + newLogic
-  //     // newValue = parseFloat('' + parseFloat(this.state.equation) + (newLogic/100.0))
-  //     // this.state.equation = newValue
-  //   }
-  //   if(newLogic==="R"){
-  //     this.state = {
-  //       equation: 0.00
-  //     }
-  //   }
-  //   let newValue, multiplier
-  //   let equation = this.state.equation
-  //   if (newLogic.includes("%")) {
-  //     multiplier = parseFloat(newLogic.replace("%","")) / 100.0
-  //     newValue = parseFloat(equation) + parseFloat(equation) * multiplier 
-  //   } else {
-  //     newValue = parseFloat('' + parseFloat(equation) + newLogic)
-  //   }
-
-  // console.log("newLogic", newLogic)
-  // console.log("this.state.equation", this.state.equation)
-
-  //   this.setState({equation: newValue.toFixed(2)})
-  // }
-
   evalEquation() {
     let str = this.state.equation.toString()
     //console.log('str: ', str)
 
-    while(this.palindrome(this.state.equation)==false){
-      this.state.equation = (Number(this.state.equation) + 0.01).toFixed(2) 
-      console.log("now: ", this.state.equation)
-      this.palindrome(this.state.equation)
+    while(this.palindrome(str)===false){
+      str = (Number(str) + 0.01).toFixed(2) 
+      console.log("now: ", str)
+      this.palindrome(str)
     }
 
-    console.log("fuck yeah! :) ", this.state.equation)
-
+    console.log("fuck yeah! :) ", str)
+    this.setState({equation: Number(str).toFixed(2)})
   }
 
     palindrome(str) {
@@ -116,6 +84,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+      <div className="title_component">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+      </div>
+
+
+
         <Result text={this.state.equation}/>
         <ButtonNumberContainer addLogicToEquation={this.addLogicToEquation}/>
         <ButtonEquationContainer addLogicToEquation={this.addLogicToEquation}
