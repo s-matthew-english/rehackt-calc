@@ -27,19 +27,19 @@ class App extends Component {
         console.log(parseFloat(equation))
 
         if(newLogic==="10%"){
+          this.setState({original: Number(equation).toFixed(2)})
           let newEquation = Number(equation) + (Number(equation) * 0.10)
           console.log(newEquation)
-          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }else if (newLogic==="15%"){
+          this.setState({original: Number(equation).toFixed(2)})
           let newEquation = Number(equation) + (Number(equation) * 0.15)
           console.log(newEquation)
-          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }else if (newLogic==="20%"){
+          this.setState({original: Number(equation).toFixed(2)})
           let newEquation = Number(equation) + (Number(equation) * 0.20)
           console.log(newEquation)
-          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }
         else{
@@ -60,6 +60,7 @@ class App extends Component {
 
   evalEquation() {
     let str = this.state.equation.toString()
+    let og = this.state.original.toString()
     //console.log('str: ', str)
 
     while(this.palindrome(str)===false){
@@ -68,26 +69,15 @@ class App extends Component {
       this.palindrome(str)
     }
 
-    console.log("fuck yeah! :) ", str)
+    og = Number(str) - Number(og)
+    og = og.toFixed(2)
+    console.log("fuck yeah! :) ", og)
     this.setState({
       equation: Number(str).toFixed(2),
-      tippodromeAnser: true
+      tippodromeAnser: true,
+      original: og
     })
   }
-
-    palindrome(str) {
-      let stringIn = str.toString().replace('.','')
-      let reverseStr = stringIn.split('').reverse().join('') 
-      if(reverseStr === stringIn) {
-        console.log("YES")
-        console.log("str: ", stringIn)
-        return true
-      } else {
-        console.log("NOT")
-        console.log("str: ", stringIn)
-        return false
-      }
-    }
 
     palindrome(str) {
       let stringIn = str.toString().replace('.','')
@@ -109,7 +99,7 @@ class App extends Component {
 
         {
           this.state.tippodromeAnser
-            ? (<div>{this.state.equation}</div>)
+            ? (<div>{this.state.original}</div>)
             : null
         }
         <Result text={this.state.equation}/>
