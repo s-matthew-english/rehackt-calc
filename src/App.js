@@ -10,6 +10,8 @@ class App extends Component {
     super()
     this.state = {
       equation: (0).toFixed(2),
+      original: (0).toFixed(2),
+      tippodromeAnser: false
     }
 
     this.addLogicToEquation = this.addLogicToEquation.bind(this)
@@ -27,14 +29,17 @@ class App extends Component {
         if(newLogic==="10%"){
           let newEquation = Number(equation) + (Number(equation) * 0.10)
           console.log(newEquation)
+          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }else if (newLogic==="15%"){
           let newEquation = Number(equation) + (Number(equation) * 0.15)
           console.log(newEquation)
+          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }else if (newLogic==="20%"){
           let newEquation = Number(equation) + (Number(equation) * 0.20)
           console.log(newEquation)
+          this.setState({original: Number(newEquation).toFixed(2)})
           this.setState({equation: Number(newEquation).toFixed(2)})
         }
         else{
@@ -64,8 +69,25 @@ class App extends Component {
     }
 
     console.log("fuck yeah! :) ", str)
-    this.setState({equation: Number(str).toFixed(2)})
+    this.setState({
+      equation: Number(str).toFixed(2),
+      tippodromeAnser: true
+    })
   }
+
+    palindrome(str) {
+      let stringIn = str.toString().replace('.','')
+      let reverseStr = stringIn.split('').reverse().join('') 
+      if(reverseStr === stringIn) {
+        console.log("YES")
+        console.log("str: ", stringIn)
+        return true
+      } else {
+        console.log("NOT")
+        console.log("str: ", stringIn)
+        return false
+      }
+    }
 
     palindrome(str) {
       let stringIn = str.toString().replace('.','')
@@ -85,21 +107,16 @@ class App extends Component {
     return (
       <div className="App">
 
-      <div className="title_component">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-
-
-
+        {
+          this.state.tippodromeAnser
+            ? (<div>{this.state.equation}</div>)
+            : null
+        }
         <Result text={this.state.equation}/>
         <ButtonNumberContainer addLogicToEquation={this.addLogicToEquation}/>
         <ButtonEquationContainer addLogicToEquation={this.addLogicToEquation}
                                  evalEquation={this.evalEquation}/>
+
       </div>
     );
   }
